@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  <!--data ko safely handel kerka deliver karta hai-->
+    <script>
+        function addapi(){
+            //alert("api call test");
+          let nm=document.getElementById("nm").value;
+          let e=document.getElementById("email").value;
+          let a=document.getElementById("address").value;
+          alert(nm+" "+e+" "+a);
+           
+            axios.post("https://codingshika.com/APP/WS_API/insert_test.php?name="+nm+"&address="+a+"&email="+e) // axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            if(responce.data.posts.status=="200"){
+                alert("insert success");
+            }else{
+                alert("insert failed");
+            
+            }
+            
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak lana hai//
+           })
+         
+        }
+         function updateapi(){
+            //alert("api call test");
+          let uid=document.getElementById("upadateid").value;
+          let namem=document.getElementById("name").value;
+          let Email=document.getElementById("Email").value;
+          let Address=document.getElementById("Address").value;
+          
+         // alert(nm+" "+e+" "+a);
+           
+            axios.post("https://codingshika.com/APP/WS_API/update_test.php?name="+name+"&email="+Email+"&address="+Address+"&id="+uid) // axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            if(responce.data.posts.status=="200"){
+                alert("update success");
+            }else{
+                alert("update failed");
+            
+            }
+            
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak lana hai//
+           })
+         
+        }
+         function delapi(){
+            //alert("api call test");
+          let id=document.getElementById("deleteid").value;
+          axios.post("https://codingshika.com/APP/WS_API/delete_test.php?id="+deleteid) // axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            if(responce.data.posts.status=="200"){
+                alert("Delete success");
+            }else{
+                alert("Delete failed");
+            
+            }
+            
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak lana hai//
+           })
+         
+        }
+ </script>
+</head>
+<body>
+    <center>
+        <h1>ADD DATA USING API IN JS</h1>
+        Name<input type="test"id="nm"><br>
+        Email<input type="email"id="email"><br>
+        Address<input type="text"id="address"><br>
+        <input type="button" onclick="addapi()" value="Add data">
+        <br><br>
+        <h1>UPDATE DATA USING API IN JS</h1>
+        ID<input type="number" id="updateid"><br>
+        Name<input type="test"id="namem"><br>
+        Email<input type="email"id="Email"><br>
+        Address<input type="test"id="Address"><br>
+        <input type="button" onclick="updateapi()" value="update data">
+        <br><br>
+           <h1>DELETE DATA USING API IN JS</h1>
+        ID<input type="number" id="deleteid"><br>
+        <input type="button" onclick="delapi()" value="DELETE DATA"
+    </center>
+</body>
+</html>

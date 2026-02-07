@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  <!--data ko safely handel kerka deliver karta hai -->
+    <script>
+        //function use
+        function test(){
+            let a=document.getElementById("name").value;  /*camel case*/
+            let b=document.getElementById("nm").value;
+            alert("Welcome "+a+"  "+b);
+            document.write(a+"   "+b);
+            /*alert("Opps You Clicked Me...");*/
+        }
+        // function or if else use
+         function getnum(){
+            let n=document.getElementById("num").value;
+            /*alert("number="+n);*/
+            if(n%2==0){
+                document.getElementById("val").innerHTML="Even Number" +n;      //h1 tag use//
+                //document.getElementById("bag").style.backgroundImage ="url('image/kurre.png')";    //background image add//
+                document.getElementById("bag").style.backgroundColor="green";    //background colour add
+                //alert("Even Number"+n);        //alert scrren add
+            }
+            else{
+                //alert("Odd Number"+n);//
+                document.getElementById("val").innerHTML="Odd Number"+n;     //h1 tag use//
+                document.getElementById("bag").style.backgroundColor="red";  //background colour add//
+            }
+        }
+        //table create
+         function tbl(){
+            let b=document.getElementById("number").value;
+            alert(b);
+            for(let i=1;i<=10;i++)   //variable
+            {
+                console.log(b*i); 
+                let t=b*i;
+                 //document.write("<br>"+t);   //scrren pa print karne ka leya
+                document.getElementById("Data").innerHTML=t;
+            }
+        }
+        // Api test
+         function api(){
+            alert("api call test");
+           axios.get("http://172.30.255.201:9000/employe")  //axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak la gana hai//
+           })
+        }
+        
+    </script>
+</head>
+<body id="bag">
+    <center>
+    <h1>Javascripting First Program</h1>
+         First Name<input type="text" id="name"><br><br>
+         Last Name<input type="text" id="nm">
+    <input type="button" onclick="test()" value="Click Me">
+<br><br>
+     Number<input type="number" id="num"><br><br>
+        <input type="button" onclick="getnum()" value="Even Odd">
+        <h1 id="val">Out Here</h1>
+<br><br>
+     Number<input type="number" id="number">
+        <input type="button" value="print table" onclick="tbl()">
+        <h1 id="Data"></h1>
+<br><br>
+        <input type="button" value="Api calling" onclick="api()">
+        
+</center>
+</body>
+</html>

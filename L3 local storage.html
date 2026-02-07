@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+      <script>
+        function storedata(){
+            let nm=document.getElementById("nm").value;
+            //alert(nm);
+            localStorage.setItem("name",nm);  //localstorage name naam ke key me nm ka data ko stor karo
+            window.Location.href="home.html";  //data is location me bhaj do
+        }
+      </script>
+<body>
+      <center>
+        Name<input type="text" id="nm">
+        <input type="button"onclick="storedata()"value="store data">
+      </center>
+</body>
+</html>

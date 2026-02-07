@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  <!--data ko safely handel kerka deliver karta hai-->
+    <script>
+        function delapi(){
+            //alert("api call test");
+          let id=document.getElementById("cid").value;
+          
+           
+            axios.post("https://codingshika.com/APP/WS_API/delete_test.php?id="+id) // axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            if(responce.data.posts.status=="200"){
+                alert("Delete success");
+            }else{
+                alert("Delete failed");
+            
+            }
+            
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak lana hai//
+           })
+         
+        }
+ </script>
+</head>
+<body>
+    <center>
+        <h1>DELETE DATA USING API IN JS</h1>
+        ID<input type="number" id="cid"><br>
+        <input type="button" onclick="delapi()" value="DELETE DATA"
+    </center>
+</body>
+</html>

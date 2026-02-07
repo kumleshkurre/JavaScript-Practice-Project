@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>  <!--data ko safely handel kerka deliver karta hai-->
+    <script>
+        function updateapi(){
+            //alert("api call test");
+          let id=document.getElementById("cid").value;
+          let nm=document.getElementById("nm").value;
+          let e=document.getElementById("email").value;
+          let a=document.getElementById("address").value;
+          
+         // alert(nm+" "+e+" "+a);
+           
+            axios.post("https://codingshika.com/APP/WS_API/update_test.php?name="+nm+"&email="+e+"&address="+a+"&id="+id) // axios laibrery sa hame data chahia//
+           .then(responce=>{   //api call karenga uska responce dega//
+            if(responce.data.posts.status=="200"){
+                alert("update success");
+            }else{
+                alert("update failed");
+            
+            }
+            
+            console.log(responce.data);  //jo api online data da raha hai usko ateset console tak lana hai//
+           })
+         
+        }
+ </script>
+</head>
+<body>
+    <center>
+        <h1>UPDATE DATA USING API IN JS</h1>
+        ID<input type="number" id="cid"><br>
+        Name<input type="test"id="nm"><br>
+        Email<input type="email"id="email"><br>
+        Address<input type="test"id="address"><br>
+        <input type="button" onclick="updateapi()" value="update data">
+    </center>
+</body>
+</html>
